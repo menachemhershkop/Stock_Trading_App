@@ -4,6 +4,7 @@ import searchStock from './trade/search.js';
 import { increaseCategory, increaseSelect } from './trade/priceChange.js';
 import { decreaseCategory, decreaseSelect } from './trade/selePrice.js';
 import filterStocksByPrice from './trade/filterPrice.js';
+import {unitBuy, unitSell} from './trade/units.js';
  
 
 function buyOrSellSys(){
@@ -14,15 +15,16 @@ function buyOrSellSys(){
         let search = input("Search product by id or name: ")
         let item = searchStock(search )
         console.log("item choice", item);
-        let unit = input("Enter num of unit to buy")
-        let buy = input("Are you sure? press 'yes' or 'not' ")
+        let unit = input("Enter num of unit to buy: ")
+        let buy = input("Are you sure? press 'yes' or 'not': ")
         if (buy == 'yes'){
+            if (unitBuy(unit, item[0])){
             increaseSelect(item[0])
             console.log("updating item", item);
             let chingeCategory = increaseCategory(item[0].name, item[0].category, market)
             console.log("updating category", chingeCategory);
             market['lastUpdated'] = new Date(); 
-        }
+        }}
         else {
             console.log("select anuther option");
             
@@ -33,9 +35,10 @@ function buyOrSellSys(){
         let search = input("Search product by id or name: ")
         let item = searchStock(search)
         console.log("item choice", item);
-        let unit = input("Enter num of unit to buy")
+        let unit = input("Enter num of unit to sell: ")
         let buy = input("Are you sure? press 'yes' or 'not' ")
         if (buy == 'yes'){
+            unitSell(unit, item[0])
             decreaseSelect(item[0], market)
             console.log("updating item", item);
             let chingeCategory = decreaseCategory(item[0].name, item[0].category, market)
