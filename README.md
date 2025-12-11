@@ -1,4 +1,4 @@
-menachem hrshkop
+menachem hershkop
 316611649
 chermon
 This program uses a stock buying system. You can see the status of the shares and perform buy and sell operations.
