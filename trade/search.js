@@ -8,3 +8,4 @@ export default function searchStock(identifier){
     }
         return items     
 }
+// console.log(searchStock("BrightFuture Academy",stockMarket));
